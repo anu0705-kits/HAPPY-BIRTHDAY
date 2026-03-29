@@ -10,69 +10,60 @@
 body{
 font-family: Arial;
 background: linear-gradient(135deg,#ffd6e0,#ffe5ec,#e0f7fa,#f3e5f5);
-color:#5a4a4a;
 margin:0;
-overflow:hidden;
 
 display:flex;
 justify-content:center;
 align-items:center;
 
-min-height:100vh;
-padding:15px;
-box-sizing:border-box;
+height:100vh;
 }
 
-/* CARD - FULL CENTER */
+/* 🌸 SMALL RECTANGLE CARD */
 .card{
-background: rgba(255,255,255,0.7);
-backdrop-filter: blur(15px);
-padding:30px;
-border-radius:20px;
+background: rgba(255,255,255,0.9);
+padding:18px;
+border-radius:15px;
 
-width:100%;
-max-width:500px;
-min-height:70vh;
+width:90%;
+max-width:320px;   /* 🔥 small rectangle */
+height:300px;      /* 🔥 fixed height */
 
-margin:auto;
-box-shadow:0 8px 25px rgba(0,0,0,0.15);
-border:1px solid rgba(255,255,255,0.4);
+box-shadow:0 6px 18px rgba(0,0,0,0.15);
 
-/* 🔥 CENTER EVERYTHING */
+/* CENTER CONTENT */
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
 
-animation:fadeIn 0.5s ease;
+animation:fadeIn 0.4s ease;
 }
 
-/* ANIMATION */
 @keyframes fadeIn{
 from{opacity:0; transform:scale(0.95);}
 to{opacity:1; transform:scale(1);}
 }
 
 /* TEXT */
-.title{
-font-size:28px;
-margin-bottom:10px;
+h1,h2,h3{
+margin:5px 0;
+font-size:18px;
 }
 
-.love-text{
-font-size:16px;
-line-height:1.6;
+p{
+font-size:13px;
+margin:5px 0;
 }
 
 /* BUTTON */
 button{
-padding:12px 22px;
-margin:10px;
+padding:8px 14px;
+margin:6px;
 border:none;
-border-radius:12px;
-font-size:16px;
-cursor:pointer;
+border-radius:8px;
+font-size:13px;
 background:#ff8fab;
 color:white;
 font-weight:bold;
@@ -84,22 +75,19 @@ background:#ff6f91;
 
 /* INPUT */
 select,input{
-padding:12px;
-font-size:16px;
-margin-top:15px;
-border-radius:10px;
+padding:8px;
+font-size:13px;
+margin-top:8px;
+border-radius:6px;
 border:none;
-width:90%;
+width:80%;
 }
 
 /* IMAGE */
 .final-img{
-width:200px;
-border-radius:20px;
-margin-top:20px;
-box-shadow:0 10px 25px rgba(0,0,0,0.2);
-background:white;
-padding:5px;
+width:120px;
+border-radius:12px;
+margin-top:10px;
 }
 
 </style>
@@ -112,22 +100,19 @@ padding:5px;
 </audio>
 
 <div class="card" id="start">
-<h1>💗Birthday Love Test💗</h1>
-<p>A little birthday surprise made with love ❤️</p>
-<button onclick="startTest()">RUN ▶</button>
+<h2>💗 Love Test 💗</h2>
+<p>Birthday surprise ❤️</p>
+<button onclick="startTest()">Start ▶</button>
 </div>
 
 <div class="card" id="card1" style="display:none;">
-<h1 class="title">Happy Birthday Yuvan 🎂</h1>
-<p class="love-text">
-You are my peace, my happiness,  
-and the reason behind my smile 🥰  
-</p>
-<button onclick="runNext('card1','card2')">Start ▶</button>
+<h3>Happy Birthday Yuvan 🎂</h3>
+<p>You are my happiness 🥰</p>
+<button onclick="runNext('card1','card2')">Next ▶</button>
 </div>
 
 <div class="card" id="card2" style="display:none;">
-<h2>How much do you love me? 💌</h2>
+<h3>How much do you love me? 💌</h3>
 <select id="love">
 <option value="">Choose</option>
 <option>25%</option>
@@ -136,54 +121,51 @@ and the reason behind my smile 🥰
 <option>100%</option>
 <option value="infinity">♾️ Infinity</option>
 </select>
-<br>
-<button onclick="checkLove()">Submit</button>
+<button onclick="checkLove()">OK</button>
 <p id="msg1"></p>
 </div>
 
 <div class="card" id="card3" style="display:none;">
-<h2>Where did we first meet? 💕</h2>
-<button onclick="temple()">Temple 🛕</button>
-<button onclick="house()">Dharshana House 🏠</button>
+<h3>Where did we meet? 💕</h3>
+<button onclick="temple()">Temple</button>
+<button onclick="house()">House</button>
 <p id="msg2"></p>
 </div>
 
 <div class="card" id="card4" style="display:none;">
-<h2>Our relationship date? 💖</h2>
-<input id="dateInput" placeholder="Example: MONTH DATE">
-<br>
-<button onclick="checkDate()">Submit</button>
+<h3>Our date? 💖</h3>
+<input id="dateInput" placeholder="Dec 24">
+<button onclick="checkDate()">OK</button>
 <p id="msg3"></p>
 </div>
 
 <div class="card" id="card5" style="display:none;">
-<h2>First movie? 🎬</h2>
-<button onclick="movie1()">NEEK 🎥</button>
-<button onclick="movie2()">DRAGON 🐉</button>
+<h3>First movie? 🎬</h3>
+<button onclick="movie1()">NEEK</button>
+<button onclick="movie2()">DRAGON</button>
 <p id="msg4"></p>
 </div>
 
 <div class="card" id="card6" style="display:none;">
-<h2>Dress colour we wore in Virudhunagar? 👕</h2>
-<button onclick="wrongColor()">Black 🖤</button>
-<button onclick="wrongColor()">Blue 💙</button>
-<button onclick="wrongColor()">Red ❤️</button>
-<button onclick="correctColor()">White 🤍</button>
-<button onclick="wrongColor()">Green 💚</button>
+<h3>Dress color? 👕</h3>
+<button onclick="wrongColor()">Black</button>
+<button onclick="wrongColor()">Blue</button>
+<button onclick="correctColor()">White</button>
+<button onclick="wrongColor()">Red</button>
 <p id="msg5"></p>
 </div>
 
 <div class="card" id="card7" style="display:none;">
-<h2>💐</h2>
-<img src="https://drive.google.com/file/d/1h_Pd4ixuz3-bNu0yMar4noDKJ2EpQfon/view?usp=sharing" class="final-img">
-<p>A bouquet full of my love 💖</p>
+<h3>💐</h3>
+<img src="YOUR-IMAGE-LINK-HERE" class="final-img">
+<p>My love for you 💖</p>
 </div>
 
 <div class="card" id="card8" style="display:none;">
-<h2>💌 Final Message</h2>
-<p>You will always be my favourite person ❤️</p>
-<p>Happy Birthday Sweetheart 🎂</p>
-<p>I love you forever ♾️ – Anu ❤️</p>
+<h3>Final ❤️</h3>
+<p>You are my favourite person</p>
+<p>Happy Birthday 🎂</p>
+<p>I love you ♾️ – Anu ❤️</p>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
@@ -201,15 +183,14 @@ document.getElementById(n).style.display="block";
 }
 
 function checkLove(){
-let v=love.value;
-if(v=="infinity"){
+if(love.value=="infinity"){
 msg1.innerHTML="Correct ❤️<br><button onclick=\"runNext('card2','card3')\">Next</button>";
 }else{
-msg1.innerHTML="No you have to choose Infinity 😤";
+msg1.innerHTML="Choose Infinity 😤";
 }
 }
 
-function temple(){msg2.innerHTML="Wrong 😠";}
+function temple(){msg2.innerHTML="Wrong";}
 function house(){
 msg2.innerHTML="Correct ❤️<br><button onclick=\"runNext('card3','card4')\">Next</button>";
 }
@@ -219,20 +200,20 @@ let d=dateInput.value.toLowerCase();
 if(d.includes("dec") && d.includes("24")){
 msg3.innerHTML="Correct 💖<br><button onclick=\"runNext('card4','card5')\">Next</button>";
 }else{
-msg3.innerHTML="Wrong 😡";
+msg3.innerHTML="Wrong";
 }
 }
 
 function movie1(){
 msg4.innerHTML="Correct ❤️<br><button onclick=\"runNext('card5','card6')\">Next</button>";
 }
-function movie2(){msg4.innerHTML="Wrong 😠";}
+function movie2(){msg4.innerHTML="Wrong";}
 
 function correctColor(){
-msg5.innerHTML="Correct 🤍<br><button onclick=\"runNext('card6','card7'); confetti(); setTimeout(()=>runNext('card7','card8'),3000);\">Final ❤️</button>";
+msg5.innerHTML="Correct 🤍<br><button onclick=\"runNext('card6','card7'); confetti(); setTimeout(()=>runNext('card7','card8'),2000);\">Final</button>";
 }
 
-function wrongColor(){msg5.innerHTML="Wrong 😠";}
+function wrongColor(){msg5.innerHTML="Wrong";}
 
 </script>
 
