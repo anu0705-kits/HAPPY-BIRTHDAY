@@ -3,7 +3,6 @@
 <head>
 <title>Birthday Love Surprise ❤️</title>
 
-<!-- ✅ PERFECT MOBILE VIEW -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -11,70 +10,49 @@
 body{
 font-family: Arial;
 background: linear-gradient(135deg,#ffd6e0,#ffe5ec,#e0f7fa,#f3e5f5);
-color:#5a4a4a;
 margin:0;
+height:100vh;
 
 display:flex;
 justify-content:center;
 align-items:center;
-
-min-height:100vh;
-padding:20px;
-box-sizing:border-box;
 }
 
-/* 💖 Floating Hearts */
+/* 💖 FLOATING HEARTS */
 body::before, body::after{
 content:"💖 💕 💗 💓 💞 ";
-font-size:20px;
 position:fixed;
 top:-10%;
 width:50%;
-animation:hearts 15s linear infinite;
+font-size:20px;
 opacity:0.3;
-pointer-events:none;
+animation:fall 15s linear infinite;
 }
 
-body::before{ left:0; text-align:left; }
-body::after{ right:0; text-align:right; }
+body::before{left:0;}
+body::after{right:0;}
 
-@keyframes hearts{
+@keyframes fall{
 0%{transform:translateY(-100px);}
 100%{transform:translateY(110vh);}
 }
 
-/* 💎 PERFECT CARD */
+/* 💎 CARD */
 .card{
-background: rgba(255,255,255,0.7);
-backdrop-filter: blur(15px);
+background: rgba(255,255,255,0.8);
 padding:30px;
-border-radius:25px;
+border-radius:20px;
 
-width:100%;
+width:90%;
 max-width:420px;
 
-margin:auto;
-box-shadow:0 10px 30px rgba(0,0,0,0.15);
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
 text-align:center;
-animation:fadeIn 0.5s ease;
-}
-
-/* Animation */
-@keyframes fadeIn{
-from{opacity:0; transform:scale(0.95);}
-to{opacity:1; transform:scale(1);}
 }
 
 /* TEXT */
-.title{
-font-size:28px;
-margin-bottom:15px;
-}
-
-.love-text{
-font-size:16px;
-line-height:1.6;
-}
+.title{font-size:26px;}
+.love-text{font-size:16px;}
 
 /* BUTTON */
 button{
@@ -82,51 +60,35 @@ padding:10px 18px;
 margin:10px;
 border:none;
 border-radius:10px;
-font-size:15px;
-cursor:pointer;
 background:#ff8fab;
 color:white;
-font-weight:bold;
-}
-
-button:hover{
-background:#ff6f91;
+font-size:15px;
 }
 
 /* INPUT */
 select,input{
 padding:10px;
-font-size:14px;
-margin-top:15px;
+width:90%;
+margin-top:10px;
 border-radius:8px;
 border:none;
+}
+
+/* 🎵 FIX AUDIO POSITION */
+audio{
+position:fixed;
+bottom:10px;
+left:50%;
+transform:translateX(-50%);
 width:90%;
+max-width:300px;
 }
 
 /* IMAGE */
 .final-img{
 width:150px;
-border-radius:20px;
-margin-top:20px;
-box-shadow:0 10px 25px rgba(0,0,0,0.2);
-background:white;
-padding:5px;
-}
-
-/* 📱 MOBILE PERFECT */
-@media (max-width:600px){
-  .card{
-    max-width:95%;
-    padding:25px;
-  }
-
-  .title{
-    font-size:26px;
-  }
-
-  .love-text{
-    font-size:15px;
-  }
+border-radius:15px;
+margin-top:15px;
 }
 
 </style>
@@ -134,7 +96,6 @@ padding:5px;
 
 <body>
 
-<!-- 🎵 MUSIC -->
 <audio controls loop>
 <source src="https://www.bensound.com/bensound-music/bensound-love.mp3">
 </audio>
@@ -183,7 +144,7 @@ and the reason behind my smile 🥰
 <!-- CARD 4 -->
 <div class="card" id="card4" style="display:none;">
 <h2>Our relationship date? 💖</h2>
-<input id="dateInput" placeholder="Example: Dec 24">
+<input id="dateInput" placeholder="Dec 24">
 <br>
 <button onclick="checkDate()">Submit</button>
 <p id="msg3"></p>
@@ -199,12 +160,12 @@ and the reason behind my smile 🥰
 
 <!-- CARD 6 -->
 <div class="card" id="card6" style="display:none;">
-<h2>Dress colour we both wore in Virudhunagar? 👕</h2>
-<button onclick="wrongColor()">Black 🖤</button>
-<button onclick="wrongColor()">Blue 💙</button>
-<button onclick="wrongColor()">Red ❤️</button>
-<button onclick="correctColor()">White 🤍</button>
-<button onclick="wrongColor()">Green 💚</button>
+<h2>Dress colour? 👕</h2>
+<button onclick="wrongColor()">Black</button>
+<button onclick="wrongColor()">Blue</button>
+<button onclick="wrongColor()">Red</button>
+<button onclick="correctColor()">White</button>
+<button onclick="wrongColor()">Green</button>
 <p id="msg5"></p>
 </div>
 
@@ -218,10 +179,11 @@ and the reason behind my smile 🥰
 <!-- FINAL -->
 <div class="card" id="card8" style="display:none;">
 <h2>💌 Final Message</h2>
-<p id="finalText"></p>
+<p>You will always be my favourite person ❤️<br>
+Happy Birthday Sweetheart 🎂<br>
+I love you forever ♾️ – Anu ❤️</p>
 </div>
 
-<!-- 🎉 CONFETTI -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <script>
@@ -237,11 +199,10 @@ document.getElementById(n).style.display="block";
 }
 
 function checkLove(){
-let v=love.value;
-if(v=="infinity"){
+if(love.value=="infinity"){
 msg1.innerHTML="Correct ❤️<br><button onclick=\"runNext('card2','card3')\">Next</button>";
 }else{
-msg1.innerHTML="No you have to choose Infinity 😤";
+msg1.innerHTML="Choose Infinity 😤";
 }
 }
 
@@ -265,35 +226,19 @@ msg4.innerHTML="Correct ❤️<br><button onclick=\"runNext('card5','card6')\">N
 function movie2(){msg4.innerHTML="Wrong 😠";}
 
 function correctColor(){
-msg5.innerHTML="Correct 🤍<br><button onclick=\"finishLove()\">Final ❤️</button>";
+msg5.innerHTML="Correct 🤍<br><button onclick=\"finish()\">Final ❤️</button>";
 }
 
-function finishLove(){
+function finish(){
 runNext('card6','card7');
 confetti();
 
 setTimeout(()=>{
 runNext('card7','card8');
-typeMessage();
 },3000);
 }
 
 function wrongColor(){msg5.innerHTML="Wrong 😠";}
-
-/* 💖 TYPING EFFECT */
-function typeMessage(){
-let text = "You will always be my favourite person ❤️ Happy Birthday Sweetheart 🎂 I love you forever ♾️ – Anu ❤️";
-let i = 0;
-
-function typing(){
-if(i < text.length){
-document.getElementById("finalText").innerHTML += text.charAt(i);
-i++;
-setTimeout(typing, 40);
-}
-}
-typing();
-}
 
 </script>
 
