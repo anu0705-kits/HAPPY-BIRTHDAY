@@ -3,27 +3,49 @@
 <head>
 <title>Birthday Love Surprise ❤️</title>
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
 
 body{
 font-family: Arial;
-text-align:center;
-background: linear-gradient(135deg,#ff1e56,#ff4d6d,#ff758f);
-padding-top:80px;
-color:white;
+background: linear-gradient(135deg,#ffd6e0,#ffe5ec,#e0f7fa,#f3e5f5);
+color:#5a4a4a;
 overflow:hidden;
+margin:0;
+
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
 }
 
-/* Floating Hearts */
+/* Floating Hearts - LEFT */
 body::before{
-content:"❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️";
-font-size:28px;
+content:"💖 💕 💗 💓 💞 💘 💝";
+font-size:24px;
 position:fixed;
 top:-10%;
 left:0;
-width:100%;
-animation:hearts 12s linear infinite;
-opacity:0.25;
+width:50%;
+text-align:left;
+animation:hearts 14s linear infinite;
+opacity:0.3;
+pointer-events:none;
+}
+
+/* Floating Hearts - RIGHT */
+body::after{
+content:"💖 💕 💗 💓 💞 💘 💝";
+font-size:24px;
+position:fixed;
+top:-10%;
+right:0;
+width:50%;
+text-align:right;
+animation:hearts 18s linear infinite;
+opacity:0.3;
+pointer-events:none;
 }
 
 @keyframes hearts{
@@ -31,75 +53,73 @@ opacity:0.25;
 100%{transform:translateY(110vh);}
 }
 
-/* Glass Card */
+/* CARD */
 .card{
-background: rgba(255,255,255,0.15);
+background: rgba(255,255,255,0.6);
 backdrop-filter: blur(15px);
-padding:45px;
-border-radius:25px;
-width:430px;
+padding:25px;
+border-radius:20px;
+width:90%;
+max-width:380px;
 margin:auto;
-box-shadow:0 8px 30px rgba(0,0,0,0.25);
-border:1px solid rgba(255,255,255,0.3);
-color:white;
-transition:0.4s;
-text-shadow:0 1px 3px rgba(0,0,0,0.3);
+box-shadow:0 8px 25px rgba(0,0,0,0.15);
+border:1px solid rgba(255,255,255,0.4);
+text-align:center;
+animation:fadeIn 0.5s ease;
 }
 
-.card:hover{
-transform:translateY(-5px) scale(1.02);
-box-shadow:0 15px 40px rgba(0,0,0,0.35);
+/* ANIMATION */
+@keyframes fadeIn{
+from{opacity:0; transform:scale(0.95);}
+to{opacity:1; transform:scale(1);}
 }
 
+/* TEXT */
 .title{
-font-size:38px;
+font-size:26px;
 margin-bottom:10px;
 }
 
 .love-text{
-font-size:18px;
-line-height:1.7;
-margin-top:15px;
+font-size:15px;
+line-height:1.6;
 }
 
+/* BUTTON */
 button{
-padding:12px 25px;
+padding:10px 20px;
 margin:10px;
 border:none;
 border-radius:10px;
-font-size:16px;
+font-size:15px;
 cursor:pointer;
-background:white;
-color:#ff1e56;
+background:#ff8fab;
+color:white;
 font-weight:bold;
 }
 
 button:hover{
-background:#ffe6ec;
-transform:scale(1.05);
+background:#ff6f91;
 }
 
+/* INPUT */
 select,input{
 padding:10px;
-font-size:16px;
-margin-top:20px;
+font-size:15px;
+margin-top:15px;
 border-radius:8px;
 border:none;
+width:80%;
 }
 
-/* FINAL IMAGE STYLE */
+/* IMAGE */
 .final-img{
-width:220px;
+width:180px;
 border-radius:20px;
 margin-top:20px;
-box-shadow:0 10px 25px rgba(0,0,0,0.3);
-transition:0.3s;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
 background:white;
 padding:5px;
-}
-
-.final-img:hover{
-transform:scale(1.05);
 }
 
 </style>
@@ -107,42 +127,27 @@ transform:scale(1.05);
 
 <body>
 
-<!-- Music -->
 <audio autoplay loop>
-<source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3">
+<source src="https://www.bensound.com/bensound-music/bensound-love.mp3">
 </audio>
 
-<!-- START -->
 <div class="card" id="start">
-<h1>💗 Birthday Love Test 💗</h1>
+<h1>💗Birthday Love Test💗</h1>
 <p>A little birthday surprise made with love ❤️</p>
 <button onclick="startTest()">RUN ▶</button>
 </div>
 
-<!-- MESSAGE -->
 <div class="card" id="card1" style="display:none;">
-<div style="font-size:30px">💖</div>
-
-<h1 class="title">Happy Birthday Yuvan</h1>
-
+<h1 class="title">Happy Birthday Yuvan 🎂</h1>
 <p class="love-text">
-In a world full of people,  
-my heart somehow found you.  
-
-You are my <b>favourite place</b>, my <b>peace</b>,  
-and the reason behind my happiest smiles 🥰  
-
-I will always choose <b>you</b> ❤️
+You are my peace, my happiness,  
+and the reason behind my smile 🥰  
 </p>
-
-<button onclick="runNext('card1','card2')">Start Love Test ▶</button>
+<button onclick="runNext('card1','card2')">Start ▶</button>
 </div>
 
-<!-- Q1 -->
 <div class="card" id="card2" style="display:none;">
-<h2>Question 1 💌</h2>
-<p><b>How much do you love me?</b></p>
-
+<h2>How much do you love me? 💌</h2>
 <select id="love">
 <option value="">Choose</option>
 <option>25%</option>
@@ -151,70 +156,49 @@ I will always choose <b>you</b> ❤️
 <option>100%</option>
 <option value="infinity">♾️ Infinity</option>
 </select>
-
 <br>
 <button onclick="checkLove()">Submit</button>
 <p id="msg1"></p>
 </div>
 
-<!-- Q2 -->
 <div class="card" id="card3" style="display:none;">
-<h2>Question 2 💕</h2>
-<p><b>Where did we first meet?</b></p>
-
+<h2>Where did we first meet? 💕</h2>
 <button onclick="temple()">Temple 🛕</button>
 <button onclick="house()">Dharshana House 🏠</button>
-
 <p id="msg2"></p>
 </div>
 
-<!-- Q3 -->
 <div class="card" id="card4" style="display:none;">
-<h2>Question 3 💖</h2>
-<p><b>Which date did we get into the relationship?</b></p>
-
-<input type="text" id="dateInput" placeholder="Example: MONTH DATE">
+<h2>Our relationship date? 💖</h2>
+<input id="dateInput" placeholder="Example: MONTH DATE">
 <br>
 <button onclick="checkDate()">Submit</button>
-
 <p id="msg3"></p>
 </div>
 
-<!-- Q4 -->
 <div class="card" id="card5" style="display:none;">
-<h2>Question 4 🎬</h2>
-<p><b>First movie we watched?</b></p>
-
+<h2>First movie? 🎬</h2>
 <button onclick="movie1()">NEEK 🎥</button>
 <button onclick="movie2()">DRAGON 🐉</button>
-
 <p id="msg4"></p>
 </div>
 
-<!-- Q5 -->
 <div class="card" id="card6" style="display:none;">
-<h2>Question 5 👕</h2>
-<p><b>What colour did we wear in Virudhunagar?</b></p>
-
+<h2>Dress color in Virudhunagar? 👕</h2>
 <button onclick="wrongColor()">Black 🖤</button>
 <button onclick="wrongColor()">Blue 💙</button>
 <button onclick="wrongColor()">Red ❤️</button>
 <button onclick="correctColor()">White 🤍</button>
 <button onclick="wrongColor()">Green 💚</button>
-
 <p id="msg5"></p>
 </div>
 
-<!-- FINAL BOUQUET -->
 <div class="card" id="card7" style="display:none;">
-<h2>💌 </h2>
-
+<h2>💐</h2>
 <img src="bouquet.jpeg" class="final-img">
-
-
+<p>A bouquet full of my love 💖</p>
 </div>
 
-<!-- FINAL MESSAGE -->
 <div class="card" id="card8" style="display:none;">
 <h2>💌 Final Message</h2>
 <p>You will always be my favourite person ❤️</p>
@@ -227,8 +211,8 @@ I will always choose <b>you</b> ❤️
 <script>
 
 function startTest(){
-document.getElementById("start").style.display="none";
-document.getElementById("card1").style.display="block";
+start.style.display="none";
+card1.style.display="block";
 }
 
 function runNext(c,n){
@@ -237,35 +221,35 @@ document.getElementById(n).style.display="block";
 }
 
 function checkLove(){
-let v=document.getElementById("love").value;
+let v=love.value;
 if(v=="infinity"){
-msg1.innerHTML="Awww 🥹❤️<br><br><button onclick=\"runNext('card2','card3')\">Next ➜</button>";
+msg1.innerHTML="Correct ❤️<br><button onclick=\"runNext('card2','card3')\">Next</button>";
 }else{
-msg1.innerHTML="No way you have to choose INFINITY 😤";
+msg1.innerHTML="No you have to choose Infinity 😤";
 }
 }
 
 function temple(){msg2.innerHTML="Wrong 😠";}
 function house(){
-msg2.innerHTML="Correct ❤️<br><br><button onclick=\"runNext('card3','card4')\">Next ➜</button>";
+msg2.innerHTML="Correct ❤️<br><button onclick=\"runNext('card3','card4')\">Next</button>";
 }
 
 function checkDate(){
 let d=dateInput.value.toLowerCase();
 if(d.includes("dec") && d.includes("24")){
-msg3.innerHTML="Correct 💖<br><br><button onclick=\"runNext('card4','card5')\">Next ➜</button>";
+msg3.innerHTML="Correct 💖<br><button onclick=\"runNext('card4','card5')\">Next</button>";
 }else{
 msg3.innerHTML="Wrong 😡";
 }
 }
 
 function movie1(){
-msg4.innerHTML="Correct ❤️<br><br><button onclick=\"runNext('card5','card6')\">Next ➜</button>";
+msg4.innerHTML="Correct ❤️<br><button onclick=\"runNext('card5','card6')\">Next</button>";
 }
 function movie2(){msg4.innerHTML="Wrong 😠";}
 
 function correctColor(){
-msg5.innerHTML="Correct 🤍<br><br><button onclick=\"runNext('card6','card7'); confetti(); setTimeout(()=>runNext('card7','card8'),3000);\">Final ❤️</button>";
+msg5.innerHTML="Correct 🤍<br><button onclick=\"runNext('card6','card7'); confetti(); setTimeout(()=>runNext('card7','card8'),3000);\">Final ❤️</button>";
 }
 
 function wrongColor(){msg5.innerHTML="Wrong 😠";}
