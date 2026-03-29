@@ -11,11 +11,14 @@ body{
 font-family: Arial;
 background: linear-gradient(135deg,#ffd6e0,#ffe5ec,#e0f7fa,#f3e5f5);
 margin:0;
-height:100vh;
 
 display:flex;
 justify-content:center;
 align-items:center;
+
+min-height:100vh;
+padding:15px;
+box-sizing:border-box;
 }
 
 /* 💖 FLOATING HEARTS */
@@ -27,6 +30,7 @@ width:50%;
 font-size:20px;
 opacity:0.3;
 animation:fall 15s linear infinite;
+pointer-events:none;
 }
 
 body::before{left:0;}
@@ -37,22 +41,29 @@ body::after{right:0;}
 100%{transform:translateY(110vh);}
 }
 
-/* 💎 CARD */
+/* 💎 PERFECT CARD */
 .card{
-background: rgba(255,255,255,0.8);
-padding:30px;
+background: rgba(255,255,255,0.85);
+padding:25px;
 border-radius:20px;
 
-width:90%;
-max-width:420px;
+width:100%;
+max-width:380px;
 
-box-shadow:0 10px 30px rgba(0,0,0,0.2);
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
 text-align:center;
 }
 
 /* TEXT */
-.title{font-size:26px;}
-.love-text{font-size:16px;}
+.title{
+font-size:24px;
+margin-bottom:10px;
+}
+
+.love-text{
+font-size:15px;
+line-height:1.5;
+}
 
 /* BUTTON */
 button{
@@ -62,7 +73,8 @@ border:none;
 border-radius:10px;
 background:#ff8fab;
 color:white;
-font-size:15px;
+font-size:14px;
+cursor:pointer;
 }
 
 /* INPUT */
@@ -74,31 +86,24 @@ border-radius:8px;
 border:none;
 }
 
-/* 🎵 FIX AUDIO POSITION */
-audio{
-position:fixed;
-bottom:10px;
-left:50%;
-transform:translateX(-50%);
-width:90%;
-max-width:300px;
-}
-
 /* IMAGE */
 .final-img{
-width:150px;
+width:140px;
 border-radius:15px;
 margin-top:15px;
+}
+
+/* 📱 MOBILE PERFECT */
+@media (max-width:600px){
+  .card{
+    max-width:95%;
+  }
 }
 
 </style>
 </head>
 
 <body>
-
-<audio controls loop>
-<source src="https://www.bensound.com/bensound-music/bensound-love.mp3">
-</audio>
 
 <!-- START -->
 <div class="card" id="start">
@@ -179,9 +184,11 @@ and the reason behind my smile 🥰
 <!-- FINAL -->
 <div class="card" id="card8" style="display:none;">
 <h2>💌 Final Message</h2>
-<p>You will always be my favourite person ❤️<br>
+<p>
+You will always be my favourite person ❤️<br>
 Happy Birthday Sweetheart 🎂<br>
-I love you forever ♾️ – Anu ❤️</p>
+I love you forever ♾️ – Anu ❤️
+</p>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
