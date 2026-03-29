@@ -3,8 +3,8 @@
 <head>
 <title>Birthday Love Surprise ❤️</title>
 
-<!-- ✅ MOBILE LOCK (NO ZOOM) -->
-<meta name="viewport" content="width=device-width, initial-scale=3.0, maximum-scale=3.0, user-scalable=no">
+<!-- ✅ MOBILE OPTIMIZED -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 
@@ -24,7 +24,15 @@ padding:10px;
 box-sizing:border-box;
 }
 
-/* Floating Hearts - LEFT */
+/* 💖 MOBILE ZOOM EFFECT */
+@media (max-width:600px){
+  body{
+    transform: scale(1.2);
+    transform-origin: center;
+  }
+}
+
+/* Floating Hearts */
 body::before{
 content:"💖 ";
 font-size:24px;
@@ -38,7 +46,6 @@ opacity:0.3;
 pointer-events:none;
 }
 
-/* Floating Hearts - RIGHT */
 body::after{
 content:"💖 ";
 font-size:24px;
@@ -57,45 +64,46 @@ pointer-events:none;
 100%{transform:translateY(110vh);}
 }
 
-/* CARD */
+/* 💎 CARD (BIGGER) */
 .card{
 background: rgba(255,255,255,0.6);
 backdrop-filter: blur(15px);
-padding:50px;
-border-radius:80px;
-width:500%;
-max-width:560px;
+padding:40px;
+border-radius:40px;
+width:90%;
+max-width:500px;
 margin:auto;
 box-shadow:0 8px 25px rgba(0,0,0,0.15);
 border:1px solid rgba(255,255,255,0.4);
 text-align:center;
 animation:fadeIn 0.5s ease;
+transition: all 0.5s ease;
 }
 
-/* ANIMATION */
+/* Animation */
 @keyframes fadeIn{
 from{opacity:0; transform:scale(0.95);}
 to{opacity:1; transform:scale(1);}
 }
 
-/* TEXT */
+/* TEXT (BIGGER) */
 .title{
-font-size:34px;
+font-size:38px;
 margin-bottom:20px;
 }
 
 .love-text{
-font-size:14px;
+font-size:18px;
 line-height:1.6;
 }
 
 /* BUTTON */
 button{
-padding:10px 18px;
+padding:12px 22px;
 margin:10px;
 border:none;
 border-radius:10px;
-font-size:14px;
+font-size:16px;
 cursor:pointer;
 background:#ff8fab;
 color:white;
@@ -131,16 +139,19 @@ padding:5px;
 
 <body>
 
-<audio autoplay loop>
+<!-- 🎵 MUSIC -->
+<audio controls loop>
 <source src="https://www.bensound.com/bensound-music/bensound-love.mp3">
 </audio>
 
+<!-- START -->
 <div class="card" id="start">
 <h1>💗 Birthday Love Test 💗</h1>
 <p>A little birthday surprise made with love ❤️</p>
 <button onclick="startTest()">RUN ▶</button>
 </div>
 
+<!-- CARD 1 -->
 <div class="card" id="card1" style="display:none;">
 <h1 class="title">Happy Birthday Yuvan 🎂</h1>
 <p class="love-text">
@@ -150,6 +161,7 @@ and the reason behind my smile 🥰
 <button onclick="runNext('card1','card2')">Start ▶</button>
 </div>
 
+<!-- CARD 2 -->
 <div class="card" id="card2" style="display:none;">
 <h2>How much do you love me? 💌</h2>
 <select id="love">
@@ -165,6 +177,7 @@ and the reason behind my smile 🥰
 <p id="msg1"></p>
 </div>
 
+<!-- CARD 3 -->
 <div class="card" id="card3" style="display:none;">
 <h2>Where did we first meet? 💕</h2>
 <button onclick="temple()">Temple 🛕</button>
@@ -172,6 +185,7 @@ and the reason behind my smile 🥰
 <p id="msg2"></p>
 </div>
 
+<!-- CARD 4 -->
 <div class="card" id="card4" style="display:none;">
 <h2>Our relationship date? 💖</h2>
 <input id="dateInput" placeholder="Example: Dec 24">
@@ -180,6 +194,7 @@ and the reason behind my smile 🥰
 <p id="msg3"></p>
 </div>
 
+<!-- CARD 5 -->
 <div class="card" id="card5" style="display:none;">
 <h2>First movie? 🎬</h2>
 <button onclick="movie1()">NEEK 🎥</button>
@@ -187,6 +202,7 @@ and the reason behind my smile 🥰
 <p id="msg4"></p>
 </div>
 
+<!-- CARD 6 -->
 <div class="card" id="card6" style="display:none;">
 <h2>Dress colour we both wore in Virudhunagar? 👕</h2>
 <button onclick="wrongColor()">Black 🖤</button>
@@ -197,19 +213,20 @@ and the reason behind my smile 🥰
 <p id="msg5"></p>
 </div>
 
+<!-- CARD 7 -->
 <div class="card" id="card7" style="display:none;">
 <h2>💐</h2>
-<img src="bouquet.jpeg" class="final-img">
+<img src="https://i.imgur.com/8Km9tLL.png" class="final-img">
 <p>A bouquet full of my love 💖</p>
 </div>
 
+<!-- FINAL -->
 <div class="card" id="card8" style="display:none;">
 <h2>💌 Final Message</h2>
-<p>You will always be my favourite person ❤️</p>
-<p>Happy Birthday Sweetheart 🎂</p>
-<p>I love you forever ♾️ – Anu ❤️</p>
+<p id="finalText"></p>
 </div>
 
+<!-- CONFETTI -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <script>
@@ -253,10 +270,35 @@ msg4.innerHTML="Correct ❤️<br><button onclick=\"runNext('card5','card6')\">N
 function movie2(){msg4.innerHTML="Wrong 😠";}
 
 function correctColor(){
-msg5.innerHTML="Correct 🤍<br><button onclick=\"runNext('card6','card7'); confetti(); setTimeout(()=>runNext('card7','card8'),3000);\">Final ❤️</button>";
+msg5.innerHTML="Correct 🤍<br><button onclick=\"finishLove()\">Final ❤️</button>";
+}
+
+function finishLove(){
+runNext('card6','card7');
+confetti();
+
+setTimeout(()=>{
+runNext('card7','card8');
+typeMessage();
+},3000);
 }
 
 function wrongColor(){msg5.innerHTML="Wrong 😠";}
+
+/* 💖 TYPING EFFECT */
+function typeMessage(){
+let text = "You will always be my favourite person ❤️ Happy Birthday Sweetheart 🎂 I love you forever ♾️ – Anu ❤️";
+let i = 0;
+
+function typing(){
+if(i < text.length){
+document.getElementById("finalText").innerHTML += text.charAt(i);
+i++;
+setTimeout(typing, 40);
+}
+}
+typing();
+}
 
 </script>
 
