@@ -3,7 +3,7 @@
 <head>
 <title>Birthday Love Surprise ❤️</title>
 
-<!-- ✅ MOBILE OPTIMIZED -->
+<!-- ✅ PERFECT MOBILE VIEW -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -13,71 +13,50 @@ font-family: Arial;
 background: linear-gradient(135deg,#ffd6e0,#ffe5ec,#e0f7fa,#f3e5f5);
 color:#5a4a4a;
 margin:0;
-overflow:hidden;
 
 display:flex;
 justify-content:center;
 align-items:center;
 
 min-height:100vh;
-padding:10px;
+padding:20px;
 box-sizing:border-box;
 }
 
-/* 💖 MOBILE ZOOM EFFECT */
-@media (max-width:600px){
-  body{
-    transform: scale(1.2);
-    transform-origin: center;
-  }
-}
-
-/* Floating Hearts */
-body::before{
-content:"💖 ";
-font-size:24px;
+/* 💖 Floating Hearts */
+body::before, body::after{
+content:"💖 💕 💗 💓 💞 ";
+font-size:20px;
 position:fixed;
 top:-10%;
-left:0;
 width:50%;
-text-align:left;
-animation:hearts 14s linear infinite;
+animation:hearts 15s linear infinite;
 opacity:0.3;
 pointer-events:none;
 }
 
-body::after{
-content:"💖 ";
-font-size:24px;
-position:fixed;
-top:-10%;
-right:0;
-width:50%;
-text-align:right;
-animation:hearts 18s linear infinite;
-opacity:0.3;
-pointer-events:none;
-}
+body::before{ left:0; text-align:left; }
+body::after{ right:0; text-align:right; }
 
 @keyframes hearts{
 0%{transform:translateY(-100px);}
 100%{transform:translateY(110vh);}
 }
 
-/* 💎 CARD (BIGGER) */
+/* 💎 PERFECT CARD */
 .card{
-background: rgba(255,255,255,0.6);
+background: rgba(255,255,255,0.7);
 backdrop-filter: blur(15px);
-padding:40px;
-border-radius:40px;
-width:90%;
-max-width:500px;
+padding:30px;
+border-radius:25px;
+
+width:100%;
+max-width:420px;
+
 margin:auto;
-box-shadow:0 8px 25px rgba(0,0,0,0.15);
-border:1px solid rgba(255,255,255,0.4);
+box-shadow:0 10px 30px rgba(0,0,0,0.15);
 text-align:center;
 animation:fadeIn 0.5s ease;
-transition: all 0.5s ease;
 }
 
 /* Animation */
@@ -86,24 +65,24 @@ from{opacity:0; transform:scale(0.95);}
 to{opacity:1; transform:scale(1);}
 }
 
-/* TEXT (BIGGER) */
+/* TEXT */
 .title{
-font-size:38px;
-margin-bottom:20px;
+font-size:28px;
+margin-bottom:15px;
 }
 
 .love-text{
-font-size:18px;
+font-size:16px;
 line-height:1.6;
 }
 
 /* BUTTON */
 button{
-padding:12px 22px;
+padding:10px 18px;
 margin:10px;
 border:none;
 border-radius:10px;
-font-size:16px;
+font-size:15px;
 cursor:pointer;
 background:#ff8fab;
 color:white;
@@ -121,17 +100,33 @@ font-size:14px;
 margin-top:15px;
 border-radius:8px;
 border:none;
-width:85%;
+width:90%;
 }
 
 /* IMAGE */
 .final-img{
-width:160px;
+width:150px;
 border-radius:20px;
 margin-top:20px;
 box-shadow:0 10px 25px rgba(0,0,0,0.2);
 background:white;
 padding:5px;
+}
+
+/* 📱 MOBILE PERFECT */
+@media (max-width:600px){
+  .card{
+    max-width:95%;
+    padding:25px;
+  }
+
+  .title{
+    font-size:26px;
+  }
+
+  .love-text{
+    font-size:15px;
+  }
 }
 
 </style>
@@ -155,8 +150,8 @@ padding:5px;
 <div class="card" id="card1" style="display:none;">
 <h1 class="title">Happy Birthday Yuvan 🎂</h1>
 <p class="love-text">
-You are my peace, my happiness,  
-and the reason behind my smile 🥰  
+You are my peace, my happiness,<br>
+and the reason behind my smile 🥰
 </p>
 <button onclick="runNext('card1','card2')">Start ▶</button>
 </div>
@@ -226,7 +221,7 @@ and the reason behind my smile 🥰
 <p id="finalText"></p>
 </div>
 
-<!-- CONFETTI -->
+<!-- 🎉 CONFETTI -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <script>
